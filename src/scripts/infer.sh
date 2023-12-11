@@ -13,7 +13,7 @@ PROMPT_TYPE="tora"
 NUM_TEST_SAMPLE=-1
 
 
-CUDA_VISIBLE_DEVICES=0 TOKENIZERS_PARALLELISM=false \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 TOKENIZERS_PARALLELISM=false \
 python -um infer.inference \
 --model_name_or_path ${MODEL_NAME_OR_PATH} \
 --data_name ${DATA_NAME} \
