@@ -108,7 +108,7 @@ def main(args):
         example['question'] = parse_question(example, args.data_name)
         gt_cot, gt_ans = parse_ground_truth(example, args.data_name)
         # full_prompt = construct_prompt(args, example)
-        full_prompt = f"Instruction:\n{example['question']}Let's write a program.\n\nResponse:"
+        full_prompt = f"Instruction:\n{example['question']} Let's write a program.\n\nResponse:"
 
         sample = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'gt': gt_ans, 'prompt': full_prompt}
 
@@ -201,7 +201,7 @@ def main(args):
     end_prompts.extend(remain_prompts)
     # sort by idx
     end_prompts = sorted(end_prompts, key=lambda x: x[0])
-    ans_split = "<|assistant|>" if args.use_train_prompt_format else "Question:"
+    ans_split = "Response:" if args.use_train_prompt_format else "Question:"
     codes = [prompt.split(ans_split)[-1].strip() for _, prompt in end_prompts]
 
     # extract preds
