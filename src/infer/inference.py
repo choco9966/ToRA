@@ -107,7 +107,8 @@ def main(args):
         # parse question and answer
         example['question'] = parse_question(example, args.data_name)
         gt_cot, gt_ans = parse_ground_truth(example, args.data_name)
-        full_prompt = construct_prompt(args, example)
+        # full_prompt = construct_prompt(args, example)
+        full_prompt = f"Instruction:\n{example['question']}Let's write a program.\n\nResponse:"
 
         sample = {'idx': idx, 'question': example['question'], 'gt_cot': gt_cot, 'gt': gt_ans, 'prompt': full_prompt}
 
